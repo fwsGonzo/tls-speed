@@ -1,0 +1,27 @@
+
+tls-speed - Test TLS speed with OpenSSL via simulated TLS server.
+
+Options:
+    --help|-h      This message.
+    --cipher       TLS cipher to use, see "openssl enc --help".
+                     Ex: "aes-128-cbc".
+    --mac          (H)MAC to use, ignored for GCM ciphers. See
+                     "openssl dgst --help". Ex: "sha256".
+    --pfs          PFS protocol: "none", "dhe", or "ecdhe".
+                     Uses 2048-bit dhe and 256-bit ecdhe.
+    --ec-curve     Name of the EC curve to use. Ex: "secp256r1".
+    --pkey-type    Public key type, "rsa" or "ec".
+    --pkey-bits    Number of bits in the RSA key used.
+    --tx-count     Number of transactions to perform.
+    --tx-size      Object size to simulate.
+    --rx-scale     Scale size by this amount: "byte|b", "kilobyte|kb",
+                     "megabyte|mb", "gigabyte|gb", "terabyte|tb".
+
+Options you should probably leave alone:
+    --prf          PRF to use, should be SHA1 or SHA256.
+    --record-size  TLS record size. Must be a multiple of the cipher
+                   block size.
+
+If an option is unset a default is used. To see the defaults, run with no
+arguments.
+
