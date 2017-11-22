@@ -411,7 +411,7 @@ std::shared_ptr<openssl_pkey> gen_ec_key(const struct tls_config *tconfig)
 
     r = EVP_PKEY_keygen_init(kctx.ctx);
     if (r != 1) throw_openssl_error("EVP_PKEY_keygen_init");
-        
+
     r = EVP_PKEY_keygen(kctx.ctx, &pkey);
     if (r != 1) throw_openssl_error("EVP_PKEY_keygen");
 
@@ -778,7 +778,7 @@ int main(int argv, char *argc[])
         uint64_t tls_overhead_estimate = (blocks * 5) + 4096;
 
         std::cout << std::fixed << std::setprecision(3); // Disable scientific notation, just print 3 decimal places.
-        std::cout.imbue(std::locale("")); // Put commas or whatever in numbers.
+        std::cout.imbue(std::locale("C")); // Put commas or whatever in numbers.
         std::cout << "Test complete! Nothing crashed!\n\n";
         std::cout << "Data processed:\n";
         std::cout << "\t" << siglen << " bytes of public key stuff\n";
@@ -807,4 +807,3 @@ int main(int argv, char *argc[])
         return 1;
     }
 }
-
